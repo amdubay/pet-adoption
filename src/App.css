@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+.pets {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.petCard {
+  padding: 20px;
+  margin: 20px;
+  border: black solid 1px;
+}
+
+.petData {
+  width: 225px;
+  height: 225px;
+}
+
+.dogThumbnail {
+  width: 150px;
+  height: 150px;
+}

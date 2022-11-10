@@ -1,0 +1,88 @@
+
+
+# TODO - high level objectives. 
+1) get token from petfinder's api. - completed (in .gitignored file)
+2) get correct format and headers to request pet data from petfinder's api. - completed (in .gitignored file)
+3) on page load, display list ("cards") of returned pet's for adoption. - we will worry about full filtering later, for now only filter for dogs.
+4) Include simple search with input for users zipcode and search radius
+    - refresh page results on search, to display new filtered list of returned pets (dogs)
+
+# TODO - low level objectives
+1) token and request format has been set up already.
+2) using useEffect on pageload, and whenever search criteria is updated, send .get request to our router to send a get request to petfinder api.
+        store the returned data.
+3) using the stored data, push the information to a module to create individual cards for each pet object. 
+        display each card in a flex-wrap type style.
+3.5) each pet card will display the name, age, gender, breed data*, and photo*:
+            accessing each property is mostly straight forward except for breed data and photo.
+
+            Easy to access properties: 
+                name is .name; typeof = string
+                age is .age; typeof = string; **note, age is returned as desriptor, not a number (ex: 'puppy', 'adult' etc.; not '1', '5', etc.)
+                gender is .gender; typeof = string
+
+            More complicated properties:
+                *breed is .breeds; typeof = object;
+                    .breeds property contains the following properties:
+                        .primary ; typeof = string; expected output = a type of dog breed such as 'pug', 'poodle', etc.
+                        .secondary ; typeof = string; expected output = a type of dog breed such as 'pug', 'poodle', etc.
+                        .mixed ; typeof = boolean ; indicator of whether the dog is a mixed breed.
+                        .unknown ; typeof = boolean ; indicates whether the breed is unknown.
+
+                    Will need to create logic to check for mixed, unknown, or secondary properties. 
+                    Also need to see how .primary, .secondary, and .mixed are returned when .unknown is true. 
+                        Do they return empty? Or do they make a 'best-guess' at the breed type?
+                    Also need to see how .primary, .secondary, and .unknown are returned when .mixed is true. 
+                        Do they return empty? Or do they make a 'best-guess' at the breed type?
+
+                    *** see findings below ***
+
+                * .photos is an array of photos. Specifically, each array item is an object that contains photo url's for 
+                    each property: .small; .medium; .large; and .full; 
+
+                    However, there is also a property called .primary_photo_cropped; and the type is an object. petfinder api 
+                        documentation does not include this property. I will need to destructure the object to better plan.
+                        - Update, .primary_photo_cropped is organized the same as a .photos index data object, that is to say, its an 
+                            object that contains photo url's for each property: .small; .medium; .large; and .full
+
+3.6) Specifiying the properties to be obtained, and to the card:
+            .name; .age; .gender; breeds.primary; breeds.secondary; breeds.mixed; breeds.unknown; .primary_photo_cropped.small 
+
+
+
+
+
+
+*** .breed findings:
+
+so far, the data I've seen for mixed breed includes: 
+    {
+        primary: 'string with legit breed'
+        secondary: 'string with legit breed'
+        mixed: true
+        unknown: false
+     }
+     {
+        primary: 'string with legit breed'
+        secondary: null
+        mixed: true
+        unknown: false
+     }
+     {
+        primary: 'Mixed Breed'    (yes, a string that returns just as such)
+        secondary: null
+        mixed: false      (yes, mixed came back as false, even though primary says 'mixed breed')
+        unknown: false
+     }
+    {
+        primary: 'Mixed Breed'    (yes, a string that returns just as such)
+        secondary: null
+        mixed: true       (mixed came back as true, in line with primary = 'mixed breed')
+        unknown: false
+     }
+
+
+
+I did not get any results with unknown = true. 
+
+***
