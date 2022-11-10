@@ -8,7 +8,10 @@ import PetList from "./petList";
 
 function App() {
   const [pets, setPets] = useState([]); // this will become an array or object of pets. type to be decided
-  //const [zipcode, setZipcode] = useState(""); // self explanitory, this will manage user zipcode state
+  const [zipcode, setZipcode] = useState(); // self explanitory, this will manage user zipcode state
+  //const [distance, setDistance] = useState("");
+  const zipcodeRef = useRef();
+  //const distanceRef = useRef();
 
   // useState to query pets on page load, but will also query pets whenever the user enters their zipcode
   // url format for .get is "https://api.petfinder.com/v2/animals?type=dog&size=medium"
@@ -17,28 +20,50 @@ function App() {
   // the zip code query will be passed through to the server as a parameter. default zipcode state is "", so no logic for a null zipcode is needed
   // returned results will be stored into setPets
 
-  // change of plan - pet query will be a function that gets called once, on page load
-  // then, when submitting a zipcode and radius, the onSubmit button can just call the pet query function.
+  // cancel this plan
 
   useEffect(() => {
     const getPetsFromApi = async () => {
-      const resp = await axios.get("http://localhost:4000/getPets");
+      const resp = await axios.post("http://localhost:4000/getPets", {
+        zip: zipcode,
+      });
       const respData = await resp.data;
       //const parseData = JSON.parse(respData);
 
       setPets(respData);
     };
     getPetsFromApi();
-  }, []);
+  }, [zipcode]);
 
   setTimeout(() => {
     console.log(pets);
   }, 3000);
 
+  const handleZipcodeChange = () => {
+    setZipcode(zipcodeRef.current.value);
+  };
+
   return (
-    <div className="pets">
-      <PetList pets={pets} />
-    </div>
+    <>
+      <div className="header">
+        <h1>Dogs for adoption!</h1>
+        <p>Search for dogs within 50 miles.</p>
+        <div>
+          <input ref={zipcodeRef} type="text" name="zipcode" />
+          <label for="zipcode">Zip Code</label>
+        </div>
+        <button onClick={handleZipcodeChange}>Search Zip Code</button>
+
+        {zipcode ? (
+          <p>Searching for dogs within 50 miles of {zipcode}</p>
+        ) : (
+          <p>Viewing national results</p>
+        )}
+      </div>
+      <div className="pets">
+        <PetList pets={pets} />
+      </div>
+    </>
   );
 }
 

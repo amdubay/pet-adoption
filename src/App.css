@@ -57,3 +57,8 @@
   width: 150px;
   height: 150px;
 }
+
+.header {
+  padding: 20px;
+  margin: 20px;
+}
