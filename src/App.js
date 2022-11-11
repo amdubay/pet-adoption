@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
 import PetList from "./petList";
+import VisibilitySensor from "react-visibility-sensor";
 
 function App() {
   const [pets, setPets] = useState([]);
@@ -92,7 +93,9 @@ function App() {
       <div className="pets">
         <PetList pets={pets} distance={distance} />
       </div>
-      <button onClick={loadNextPage}>Load More!</button>
+      <VisibilitySensor onChange={loadNextPage}>
+        <button onClick={loadNextPage}>Load More!</button>
+      </VisibilitySensor>
     </>
   );
 }
