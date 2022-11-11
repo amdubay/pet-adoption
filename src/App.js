@@ -6,6 +6,7 @@ import PetList from "./petList";
 
 function App() {
   const [pets, setPets] = useState([]);
+  const [page, setPage] = useState("1");
   const [zipcode, setZipcode] = useState();
   const [distance, setDistance] = useState();
   const zipcodeRef = useRef();
@@ -16,6 +17,7 @@ function App() {
     const resp = await axios.post("http://localhost:4000/getPets", {
       zip: zipcode,
       dist: distance,
+      pg: page,
     });
     const respData = await resp.data;
 
@@ -24,9 +26,7 @@ function App() {
 
   useEffect(() => {
     getPetsFromApi();
-  }, []);
-
-  //getPetsFromApi();
+  }, [zipcode, distance]);
 
   setTimeout(() => {
     console.log(pets);
@@ -39,15 +39,16 @@ function App() {
     if (distanceRef.current.value) {
       handleDistanceChange();
     }
-    getPetsFromApi();
   };
 
   const handleZipcodeChange = () => {
     setZipcode(zipcodeRef.current.value);
+    return;
   };
 
   const handleDistanceChange = () => {
     setDistance(distanceRef.current.value);
+    return;
   };
 
   return (
