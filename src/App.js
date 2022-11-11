@@ -6,7 +6,7 @@ import PetList from "./petList";
 
 function App() {
   const [pets, setPets] = useState([]);
-  const [page, setPage] = useState("1");
+  const [page, setPage] = useState(1);
   const [zipcode, setZipcode] = useState();
   const [distance, setDistance] = useState();
   const zipcodeRef = useRef();
@@ -20,13 +20,20 @@ function App() {
       pg: page,
     });
     const respData = await resp.data;
-
-    setPets(respData);
+    if (page == "1") {
+      setPets(respData);
+    } else {
+      setPets((prevPets) => {
+        const currentPets = [...prevPets];
+        const addPets = currentPets.concat(respData);
+        return addPets;
+      });
+    }
   };
 
   useEffect(() => {
     getPetsFromApi();
-  }, [zipcode, distance]);
+  }, [zipcode, distance, page]);
 
   setTimeout(() => {
     console.log(pets);
@@ -43,12 +50,19 @@ function App() {
 
   const handleZipcodeChange = () => {
     setZipcode(zipcodeRef.current.value);
+    setPage(1);
     return;
   };
 
   const handleDistanceChange = () => {
     setDistance(distanceRef.current.value);
+    setPage(1);
     return;
+  };
+
+  const loadNextPage = () => {
+    let currentPage = page;
+    setPage(currentPage + 1);
   };
 
   return (
@@ -78,6 +92,7 @@ function App() {
       <div className="pets">
         <PetList pets={pets} distance={distance} />
       </div>
+      <button onClick={loadNextPage}>Load More!</button>
     </>
   );
 }
