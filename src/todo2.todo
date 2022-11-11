@@ -1,0 +1,33 @@
+#current state of the app.
+on page load, app requests national list of dogs for adoption.
+app includes input for zipcode and distance radius for search.
+On search, app requests updated list of dogs for adoption that match the search criteria.
+To account for petfinder sending pets that don't match filters (in the event that there aren't enough pets that meet filters), I included 
+    a .filter in petList.js.
+Pets are organized in simple cards.
+
+
+#next objectives, in no particular order.
+1) Confirm that .filter is needed in petList.js - Modify server file, instead of using concating variables to form a string, hardcode
+        the url for the api call. (this will rule out or confirm that the zipcode and query data is not causing the unfiltered results)
+
+2) Petfinder, by default, returns 'page 1' of results. The max results per page is 100. If there are over 100 dogs that match   
+        our filters, we will never see them. We would need to request 'page 2', and 'page 3', etc. from petfinder.
+        This will need to be accounted for to make sure the user has access to all matching dogs. Possibly by a 'load more results' button,
+        or load more automatically once user reaches the bottom of results., or another option. 
+        -look into creating an element that is injected after <petList /> that upon entering the viewport, calls necessary functions.
+
+3) Resolve this warning: Each child in a list should have a unique "key" prop. 
+            import { v4 as uuidv4 } from "uuid";
+            const variable = uuidv4()
+4) Add localstorage use to store zipcode, distance, and all future filter states.
+
+5) Add little buttons for each active filter item, with little x's in them that remove the filter upon click.
+
+6) Add additional filters. 
+        One primary objective is to create a filter for dog breeds. However, I want to have an option to exclude certain breeds as well.
+        This will require some extra planning, since the petfinder api does not offer a "does not equal" option. They might not even offer
+        multiple breed matching. This means I need to structure the api call as effeciently as possible to get as close to the desired results
+        as possible, and then will need to filter further within the app.
+
+7) Start working on the presentation.
