@@ -20,7 +20,12 @@ export default function PetList({ pets }) {
           <p>Age: {pet.age}</p>
           <p>Gender: {pet.gender}</p>
           <p>Primary Breed: {pet.breeds.primary}</p>
-          <p>Distance: {isDistanceNull(pet.distance)} miles</p>
+
+          {pet.distance ? (
+            <p>Distance {Math.round(pet.distance)} miles</p>
+          ) : (
+            <p></p>
+          )}
         </div>
         <img
           src={isPhotoNull(pet.primary_photo_cropped)}
