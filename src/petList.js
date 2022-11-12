@@ -1,7 +1,7 @@
 import React from "react";
 import petCard from "./petCard";
 
-export default function PetList({ pets, distance }) {
+export default function PetList({ pets, distance, zipcode }) {
   const isPhotoNull = (url) => {
     return url
       ? url.small
@@ -12,7 +12,7 @@ export default function PetList({ pets, distance }) {
     return criteria ? Math.round(criteria) : "";
   };
 
-  if (distance) {
+  if (zipcode) {
     console.log(pets);
     var filteredPets = pets.filter((pet) => {
       return pet.distance < distance;

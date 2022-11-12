@@ -11,11 +11,19 @@ Pets are organized in simple cards.
 1) Confirm that .filter is needed in petList.js - Modify server file, instead of using concating variables to form a string, hardcode
         the url for the api call. (this will rule out or confirm that the zipcode and query data is not causing the unfiltered results)
 
+#Completed. 
 2) Petfinder, by default, returns 'page 1' of results. The max results per page is 100. If there are over 100 dogs that match   
         our filters, we will never see them. We would need to request 'page 2', and 'page 3', etc. from petfinder.
         This will need to be accounted for to make sure the user has access to all matching dogs. Possibly by a 'load more results' button,
         or load more automatically once user reaches the bottom of results., or another option. 
         -look into creating an element that is injected after <petList /> that upon entering the viewport, calls necessary functions.
+        
+        ##This has been added. created a button AND when that button enters viewport, it loads new results. Created a new state to track which 
+                page to search next. 
+        
+        2.1) Fix issue - on initial page load, since button is visible, it causes a trigger to call api again. If user enters search 
+                        params before 'national pets' api call returns results, those national pets get added into the search param results.
+                        
 
 3) Resolve this warning: Each child in a list should have a unique "key" prop. 
             import { v4 as uuidv4 } from "uuid";

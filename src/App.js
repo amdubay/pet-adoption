@@ -9,12 +9,13 @@ function App() {
   const [pets, setPets] = useState([]);
   const [page, setPage] = useState(1);
   const [zipcode, setZipcode] = useState();
-  const [distance, setDistance] = useState();
+  const [distance, setDistance] = useState(50);
   const zipcodeRef = useRef();
   const distanceRef = useRef();
 
   const getPetsFromApi = async () => {
     console.log("we're in making a request");
+    //const resp = await axios.post("http://23.94.202.180:4000/getPets", {
     const resp = await axios.post("http://localhost:4000/getPets", {
       zip: zipcode,
       dist: distance,
@@ -91,7 +92,7 @@ function App() {
         )}
       </div>
       <div className="pets">
-        <PetList pets={pets} distance={distance} />
+        <PetList pets={pets} distance={distance} zipcode={zipcode} />
       </div>
       <VisibilitySensor onChange={loadNextPage}>
         <button onClick={loadNextPage}>Load More!</button>
