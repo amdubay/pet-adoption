@@ -30,6 +30,9 @@ export default function PetList({ pets, distance, zipcode }) {
           <p>Age: {pet.age}</p>
           <p>Gender: {pet.gender}</p>
           <p>Primary Breed: {pet.breeds.primary}</p>
+          <p>Secondary Breed: {pet.breeds.secondary}</p>
+          <p>Is Mixed Breed? {pet.breeds.mixed ? "True" : "False"}</p>
+          <p>Breed Unknown? {pet.breeds.unknown ? "True" : "False"}</p>
 
           {pet.distance ? (
             <p>Distance {Math.round(pet.distance)} miles</p>
