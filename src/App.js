@@ -10,8 +10,11 @@ function App() {
   const [page, setPage] = useState(1);
   const [zipcode, setZipcode] = useState();
   const [distance, setDistance] = useState(50);
+  const [genderRadio, setGenderRadio] = useState();
+  const [gender, setGender] = useState();
   const zipcodeRef = useRef();
   const distanceRef = useRef();
+  const genderRef = useRef();
 
   const getPetsFromApi = async () => {
     console.log("we're in making a request");
@@ -20,6 +23,7 @@ function App() {
       zip: zipcode,
       dist: distance,
       pg: page,
+      gen: gender,
     });
     const respData = await resp.data;
     if (page == "1") {
@@ -35,7 +39,7 @@ function App() {
 
   useEffect(() => {
     getPetsFromApi();
-  }, [zipcode, distance, page]);
+  }, [zipcode, distance, page, gender]);
 
   setTimeout(() => {
     console.log(pets);
@@ -48,6 +52,9 @@ function App() {
     if (distanceRef.current.value) {
       handleDistanceChange();
     }
+    if (genderRadio != gender) {
+      handleGenderChange();
+    }
   };
 
   const handleZipcodeChange = () => {
@@ -58,6 +65,12 @@ function App() {
 
   const handleDistanceChange = () => {
     setDistance(distanceRef.current.value);
+    setPage(1);
+    return;
+  };
+
+  const handleGenderChange = () => {
+    setGender(genderRadio);
     setPage(1);
     return;
   };
@@ -80,6 +93,39 @@ function App() {
           <input ref={distanceRef} type="text" name="distance" />
           <label for="distance">Distance</label>
         </div>
+
+        <div>
+          <input
+            ref={genderRef}
+            type="radio"
+            name="gender"
+            id="male"
+            value="male"
+            onClick={() => setGenderRadio("male")}
+          />
+          <label for="male">Male</label>
+          <input
+            ref={genderRef}
+            type="radio"
+            name="gender"
+            id="female"
+            value="female"
+            onClick={() => setGenderRadio("female")}
+          />
+          <label for="female">Female</label>
+
+          <input
+            ref={genderRef}
+            type="radio"
+            name="gender"
+            id="none"
+            value="none"
+            onClick={() => setGenderRadio("")}
+          />
+          <label for="female">All</label>
+          <label for="gender"> Gender</label>
+        </div>
+
         <button onClick={handleSearch}>Search</button>
 
         {zipcode ? (
