@@ -27,6 +27,10 @@ export default function PetList({ pets, distance, zipcode }) {
       <div className="petCard">
         <div className="petData">
           <h5>Name: {pet.name}</h5>
+          <p>
+            Location:{" "}
+            {pet.contact.address.city + "," + pet.contact.address.state}
+          </p>
           <p>Age: {pet.age}</p>
           <p>Gender: {pet.gender}</p>
           <p>Primary Breed: {pet.breeds.primary}</p>
