@@ -5,7 +5,7 @@ export default function PetList({ pets, distance, zipcode }) {
   const isPhotoNull = (url) => {
     return url
       ? url.small
-      : "https://www.kindpng.com/picc/m/36-366584_dog-puppy-silhouette-clip-art-dog-silhouette-no.png";
+      : "https://static.vecteezy.com/system/resources/previews/004/342/484/original/silhouette-of-a-dog-s-head-free-vector.jpg";
   };
 
   const isDistanceNull = (criteria) => {
