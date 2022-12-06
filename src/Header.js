@@ -6,21 +6,22 @@ import "./App.css";
 
 function App() {
   return (
-    <>
-      <img src={logo} className="dogThumbnail" />
-      <h3>Adopt a dog!</h3>
+    <div className="header">
+      <img src={logo} className="headerLogo" />
+      <p>website/project under construction</p>
+
       <ul>
         <li>
           <a href="/home">Home</a>
         </li>
         <li>
-          <a href="/search">Adoptable Dogs</a>
+          <a href="/search">Find A Dog</a>
         </li>
         <li>
           <a href="/about">About</a>
         </li>
       </ul>
-    </>
+    </div>
   );
 }
 

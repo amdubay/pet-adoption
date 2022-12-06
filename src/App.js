@@ -3,11 +3,11 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React, { useState, useRef, useEffect } from "react";
 
-// import Home component
 import Search from "./Search";
 import Home from "./Home";
 import Header from "./Header";
 import About from "./About";
+import Footer from "./Footer";
 // import ContactUs component
 //import ContactUs from "./components/ContactUs";
 
@@ -35,6 +35,7 @@ function App() {
           <Route exact path="/about" element={<About />} />
         </Routes>
       </Router>
+      <Footer />
     </>
   );
 }

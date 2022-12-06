@@ -1,0 +1,191 @@
+/*  
+Command Line 'sass --watch App.scss App.css' 
+
+
+*/
+
+/*****  mixin's *********/
+
+@mixin no-padding-margin-top-bottom {
+  padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+}
+
+
+/******* Global  ********/
+
+body {
+  margin: 0;
+  font-size: 15px;
+  font-family: Helvetica, Helvetica Neue, Arial, Lucida Grande, sans-serif;
+  font-style: normal;
+  width: 100%;
+}
+
+  ul, li {
+    list-style-type: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+  /*
+  #root {
+    background: radial-gradient(#f1f0ed, #dcdad7);
+   
+  }
+  */
+  
+/************** HEADER ********** */
+  
+  .headerLogo {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .header {
+    padding: 20px;
+    min-height: 4vh;
+    max-height: 5vh;
+    margin-top: 0;
+    margin-bottom: 0;
+    
+    display: flex;
+
+    
+    justify-content: space-between;
+
+    ul {
+      display: flex;
+      width: 400px;
+      justify-content: space-around;
+
+      li {
+        width: 100px;
+        a {
+        align-items: center;
+        }
+      }
+     
+    
+    
+    }
+
+  }
+
+
+
+
+
+  .footer {
+    display: flex;
+    min-height: 4vh;
+    max-height: 5vh;
+  }
+  
+  .footer ul {
+    display: flex;
+    
+  }
+  
+
+  
+/*************  Home Page Banner **************/
+
+  .homebanner {
+    background-image: url('images/dogbackground4.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    min-height: 80vh;
+    max-height: 90vh;
+    @include no-padding-margin-top-bottom;
+
+      .bannerbox {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding: 10px;
+        width: 300px;
+        position: relative;
+        top: 150px; 
+        left: 150px;
+        background-color: rgba(32, 28, 28, 0.9);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        border-radius: 5px;
+        color: white;
+
+        a {
+          background-color: rgb(174, 186, 186);
+          color: black;
+          padding: 15px;
+          margin: 10px;
+          font-weight: bold;
+          font-size: 1.5em;
+        }
+
+        
+      }
+      h1 {
+        @include no-padding-margin-top-bottom;
+        text-align: center;
+      }
+  }
+
+/********** Homepage Banner  - Tablet  *********/
+
+@media screen and (max-width: 768px) {
+  .homebanner {
+
+
+    
+    .bannerbox {
+      width: 200px;
+      top: 100px; 
+      left: 100px;
+
+
+    }
+  }
+}
+
+
+
+
+
+  .pets {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .petCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding: 20px;
+    margin: 20px;
+    border: black solid 1px;
+    box-shadow: 10px 5px 5px grey;
+    background-color: white;
+  }
+  
+  .petData {
+    width: 225px;
+    height: 350px;
+  
+  
+  }
+  
+  .dogThumbnail {
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    padding: 10px;
+  
+  }

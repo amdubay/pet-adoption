@@ -5,10 +5,12 @@ import "./App.css";
 
 function App() {
   return (
-    <>
-      <h1>Are you ready to search some dogs!</h1>
-      <a href="/search">Click to start!</a>
-    </>
+    <div className="homebanner">
+      <div className="bannerbox">
+        <h1>Find your new best friend!</h1>
+        <a href="/search">Click to start!</a>
+      </div>
+    </div>
   );
 }
 

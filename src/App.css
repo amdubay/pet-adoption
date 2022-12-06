@@ -1,42 +1,122 @@
-.App {
+/*  
+Command Line 'sass --watch App.scss App.css' 
+
+
+*/
+/*****  mixin's *********/
+/******* Global  ********/
+body {
+  margin: 0;
+  font-size: 15px;
+  font-family: Helvetica, Helvetica Neue, Arial, Lucida Grande, sans-serif;
+  font-style: normal;
+  width: 100%;
+}
+
+ul, li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*
+#root {
+  background: radial-gradient(#f1f0ed, #dcdad7);
+
+}
+*/
+/************** HEADER ********** */
+.headerLogo {
+  width: 50px;
+  height: 50px;
+}
+
+.header {
+  padding: 20px;
+  min-height: 4vh;
+  max-height: 5vh;
+  margin-top: 0;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: space-between;
+}
+.header ul {
+  display: flex;
+  width: 400px;
+  justify-content: space-around;
+}
+.header ul li {
+  width: 100px;
+}
+.header ul li a {
+  align-items: center;
+}
+
+.footer {
+  display: flex;
+  min-height: 4vh;
+  max-height: 5vh;
+}
+
+.footer ul {
+  display: flex;
+}
+
+/*************  Home Page Banner **************/
+.homebanner {
+  background-image: url("images/dogbackground4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  min-height: 80vh;
+  max-height: 90vh;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.homebanner .bannerbox {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 10px;
+  width: 300px;
+  position: relative;
+  top: 150px;
+  left: 150px;
+  background-color: rgba(32, 28, 28, 0.9);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-radius: 5px;
+  color: white;
+}
+.homebanner .bannerbox a {
+  background-color: rgb(174, 186, 186);
+  color: black;
+  padding: 15px;
+  margin: 10px;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+.homebanner h1 {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/********** Homepage Banner  - Tablet  *********/
+@media screen and (max-width: 768px) {
+  .homebanner .bannerbox {
+    width: 200px;
+    top: 100px;
+    left: 100px;
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .pets {
   display: flex;
   flex-wrap: wrap;
@@ -52,13 +132,12 @@
   margin: 20px;
   border: black solid 1px;
   box-shadow: 10px 5px 5px grey;
+  background-color: white;
 }
 
 .petData {
   width: 225px;
   height: 350px;
-
-
 }
 
 .dogThumbnail {
@@ -66,10 +145,6 @@
   height: 150px;
   margin: 10px;
   padding: 10px;
-
 }
 
-.header {
-  padding: 20px;
-  margin: 20px;
-}
+/*# sourceMappingURL=App.css.map */
