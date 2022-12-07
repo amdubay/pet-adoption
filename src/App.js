@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React, { useState, useRef, useEffect } from "react";
 
 import Search from "./Search";
+import Petcard from "./petCard";
 import Home from "./Home";
 import Header from "./Header";
 import About from "./About";
@@ -28,6 +29,8 @@ function App() {
 		with exact path "/search", in component
 		props we passes the imported component*/}
           <Route exact path="/search" element={<Search />} />
+
+          <Route exact path="/petcard/:petid" element={<Petcard />} />
 
           {/* This route is for about component
 		with exact path "/about", in component

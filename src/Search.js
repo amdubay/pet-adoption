@@ -23,14 +23,17 @@ function App() {
 
   const getPetsFromApi = async () => {
     console.log("we're in making a request");
-    const resp = await axios.post("http://23.94.202.180:4000/getPets", {
-      //const resp = await axios.post("http://localhost:4000/getPets", {
-      zip: zipcode,
-      dist: distance,
-      pg: page,
-      gen: gender,
-      breed: selectedBreed,
-    });
+    const resp = await axios.post(
+      "https://petfinderapi.addisondubay.com/getPets",
+      {
+        //const resp = await axios.post("http://localhost:4000/getPets", {
+        zip: zipcode,
+        dist: distance,
+        pg: page,
+        gen: gender,
+        breed: selectedBreed,
+      }
+    );
     const respData = await resp.data;
     if (page == "1") {
       setPets(respData);
@@ -45,9 +48,12 @@ function App() {
 
   const getBreedsFromApi = async () => {
     console.log("we're in making a breed request");
-    const resp = await axios.get("http://23.94.202.180:4000/getBreeds", {
-      //const resp = await axios.get("http://localhost:4000/getBreeds", {
-    });
+    const resp = await axios.get(
+      "https://petfinderapi.addisondubay.com/getBreeds",
+      {
+        //const resp = await axios.get("http://localhost:4000/getBreeds", {
+      }
+    );
     const respData = await resp.data;
     setBreedList(respData);
   };
