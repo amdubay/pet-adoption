@@ -10,6 +10,8 @@ Pets are organized in simple cards.
 #next objectives, in no particular order.
 1) Confirm that .filter is needed in petList.js - Modify server file, instead of using concating variables to form a string, hardcode
         the url for the api call. (this will rule out or confirm that the zipcode and query data is not causing the unfiltered results)
+        My assumption here is based on PetFinder.com's actual website. Their search criteria includes an option (by default) to search for
+        pets outside of the location search parameters that are able to be transported to the area.
 
 #Completed. 
 2) Petfinder, by default, returns 'page 1' of results. The max results per page is 100. If there are over 100 dogs that match   
@@ -28,6 +30,8 @@ Pets are organized in simple cards.
 3) Resolve this warning: Each child in a list should have a unique "key" prop. 
             import { v4 as uuidv4 } from "uuid";
             const variable = uuidv4()
+
+#Cancel - decided this is not needed. Eventually, I will want to create user-accounts, and they can create saved searches instead.
 4) Add localstorage use to store zipcode, distance, and all future filter states.
 
 5) Add little buttons for each active filter item, with little x's in them that remove the filter upon click.
@@ -39,3 +43,7 @@ Pets are organized in simple cards.
         as possible, and then will need to filter further within the app.
 
 7) Start working on the presentation.
+
+8) Look into adding user accounts / logins with the basic functionality to:
+                --- save search criteria
+                --- save pets as favorites
