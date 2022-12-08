@@ -34,20 +34,17 @@ export default function PetList({ pets, distance, zipcode }) {
           </p>
           <p>Age: {pet.age}</p>
           <p>Gender: {pet.gender}</p>
-          <p>Primary Breed: {pet.breeds.primary}</p>
-          <p>Secondary Breed: {pet.breeds.secondary}</p>
-          <p>Is Mixed Breed? {pet.breeds.mixed ? "True" : "False"}</p>
-          <p>Breed Unknown? {pet.breeds.unknown ? "True" : "False"}</p>
+          <p>
+            Breed: {pet.breeds.primary}{" "}
+            {pet.breeds.mixed == true || pet.breeds.secondary ? " - mix" : ""}
+          </p>
 
           {pet.distance ? (
             <p>Distance {Math.round(pet.distance)} miles</p>
           ) : (
             <p></p>
           )}
-          <Link to={`../petcard/${pet.id}`}>See {pet.id}</Link>
-          <a href={pet.url} target="_blank">
-            See me on PetFinder.com!
-          </a>
+          <Link to={`../petcard/${pet.id}`}>More details about {pet.name}</Link>
         </div>
         <img
           src={isPhotoNull(pet.primary_photo_cropped)}

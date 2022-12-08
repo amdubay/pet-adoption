@@ -7,7 +7,7 @@ import BreedList from "./breedList";
 import VisibilitySensor from "react-visibility-sensor";
 
 // selectServer.   1 = deployed server;   2 = development server
-let selectServer = 2;
+let selectServer = 1;
 let server =
   selectServer === 1
     ? "https://petfinderapi.addisondubay.com"
