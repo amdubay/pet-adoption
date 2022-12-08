@@ -1,7 +1,7 @@
 /*  
 Command Line 'sass --watch App.scss App.css' 
 
-
+ 
 */
 
 /*****  mixin's *********/
@@ -154,7 +154,7 @@ body {
 }
 
 
-
+/************ Need to Organize ****************/
 
 
   .pets {
@@ -188,4 +188,17 @@ body {
     margin: 10px;
     padding: 10px;
   
+  }
+
+  .petCardPage {
+    padding: 20px;
+    background-color: rgb(234, 235, 224);
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+ 
+
+ 
+    
   }

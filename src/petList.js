@@ -1,5 +1,5 @@
 import React from "react";
-import petCard from "./petCard";
+
 import { Link } from "react-router-dom";
 
 export default function PetList({ pets, distance, zipcode }) {
@@ -44,7 +44,9 @@ export default function PetList({ pets, distance, zipcode }) {
           ) : (
             <p></p>
           )}
-          <Link to={`../petcard/${pet.id}`}>More details about {pet.name}</Link>
+          <Link to={`../petcard/${pet.id}`} target="_blank">
+            More details about {pet.name}
+          </Link>
         </div>
         <img
           src={isPhotoNull(pet.primary_photo_cropped)}
