@@ -1,5 +1,6 @@
 import React from "react";
 import petCard from "./petCard";
+import { Link } from "react-router-dom";
 
 export default function PetList({ pets, distance, zipcode }) {
   const isPhotoNull = (url) => {
@@ -43,6 +44,7 @@ export default function PetList({ pets, distance, zipcode }) {
           ) : (
             <p></p>
           )}
+          <Link to={`../petcard/${pet.id}`}>See {pet.id}</Link>
           <a href={pet.url} target="_blank">
             See me on PetFinder.com!
           </a>
