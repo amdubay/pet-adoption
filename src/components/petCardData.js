@@ -1,6 +1,12 @@
 import React from "react";
 
-export default function PetCardData({ dogData, breedOf, orgData, petid }) {
+export default function PetCardData({
+  dogData,
+  breedOf,
+  orgData,
+  petid,
+  photos,
+}) {
   const isPhotoNull = (url) => {
     return url
       ? url.small
@@ -11,10 +17,15 @@ export default function PetCardData({ dogData, breedOf, orgData, petid }) {
     <div className="petCardPage">
       <h2>{dogData.name}</h2>
       <p>ID: {petid}</p>
-      <img
+      {/*<img
         src={isPhotoNull(dogData.primary_photo_cropped)}
         className="dogThumbnail"
-      />
+  />*/}
+      <div className="dogPhotos">
+        {photos.map((photo) => {
+          return <img src={photo} className="dogPicture" />;
+        })}
+      </div>
       <p>Name: {dogData.name}</p>
       <p>Age: {dogData.age}</p>
       <p>Gender: {dogData.gender}</p>

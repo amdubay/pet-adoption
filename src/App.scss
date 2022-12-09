@@ -197,8 +197,19 @@ body {
     flex-wrap: nowrap;
     flex-direction: column;
     align-items: center;
- 
+    
+    .dogPhotos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      .dogPicture {
+        width: 15%;
+        height: auto;
+        margin: 5px;
+        padding: 5px;
 
+      }
+    }
  
     
   }

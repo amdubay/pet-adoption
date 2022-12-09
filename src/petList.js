@@ -44,7 +44,10 @@ export default function PetList({ pets, distance, zipcode }) {
           ) : (
             <p></p>
           )}
-          <Link to={`../petcard/${pet.id}`} target="_blank">
+          <Link
+            to={`../petcard/${pet.organization_id}/${pet.id}`}
+            target="_blank"
+          >
             More details about {pet.name}
           </Link>
         </div>

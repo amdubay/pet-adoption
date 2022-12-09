@@ -30,7 +30,7 @@ function App() {
 		props we passes the imported component*/}
           <Route exact path="/search" element={<Search />} />
 
-          <Route exact path="/petcard/:petid" element={<Petcard />} />
+          <Route exact path="/petcard/:orgid/:petid" element={<Petcard />} />
 
           {/* This route is for about component
 		with exact path "/about", in component
