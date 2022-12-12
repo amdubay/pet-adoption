@@ -5,15 +5,7 @@ import "./App.css";
 import PetList from "./petList";
 import BreedList from "./breedList";
 import VisibilitySensor from "react-visibility-sensor";
-
-// selectServer.   1 = deployed server;   2 = development server
-let selectServer = 1;
-let server =
-  selectServer === 1
-    ? "https://petfinderapi.addisondubay.com"
-    : "http://localhost:4000";
-
-//let server = "https://petfinderapi.addisondubay.com";
+import { server } from "./variables";
 
 function App() {
   const [pets, setPets] = useState([]);
@@ -54,9 +46,7 @@ function App() {
 
   const getBreedsFromApi = async () => {
     console.log("we're in making a breed request");
-    const resp = await axios.get(`${server}/getBreeds`, {
-      //const resp = await axios.get("http://localhost:4000/getBreeds", {
-    });
+    const resp = await axios.get(`${server}/getBreeds`, {});
     const respData = await resp.data;
     setBreedList(respData);
   };

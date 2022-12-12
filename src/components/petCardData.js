@@ -12,7 +12,7 @@ export default function PetCardData({
       ? url.small
       : "https://static.vecteezy.com/system/resources/previews/004/342/484/original/silhouette-of-a-dog-s-head-free-vector.jpg";
   };
-  console.log(dogData.description);
+  console.log(dogData);
   return (
     <div className="petCardPage">
       <h2>{dogData.name}</h2>

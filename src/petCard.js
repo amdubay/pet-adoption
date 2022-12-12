@@ -2,12 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import PetCardData from "./components/petCardData";
-
-let selectServer = 1;
-let server =
-  selectServer === 1
-    ? "https://petfinderapi.addisondubay.com"
-    : "http://localhost:4000";
+import { server } from "./variables";
 
 export default function Petcard() {
   let { petid, orgid } = useParams();
