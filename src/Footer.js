@@ -10,6 +10,12 @@ import "./App.css";
 function App() {
   return (
     <div className="footer">
+      <p>
+        Powered by{" "}
+        <a href="http://petfinder.com" target="_blank">
+          Petfinder!
+        </a>
+      </p>
       <p>Copyright - {brand} - 2022</p>
       <ul>
         <li>

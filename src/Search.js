@@ -59,6 +59,24 @@ function App() {
   setTimeout(() => {
     console.log(pets);
     console.log(breedList);
+    console.log(`Number of search results ${pets.length}`);
+
+    // Find duplicates in pets list ******************************************
+    let petids = pets.map((pet) => {
+      return pet.id;
+    });
+    let findDuplicates = (arr) =>
+      arr.filter((item, index) => arr.indexOf(item) != index);
+    let numOfDuplicates = findDuplicates(petids);
+    console.log(numOfDuplicates);
+    for (let i = 0; i < numOfDuplicates.length; i++) {
+      console.log(
+        `i=${i} id=${numOfDuplicates[i]} first index match= ${petids.indexOf(
+          numOfDuplicates[i]
+        )}`
+      );
+    }
+    // ************************* end of debugging duplicates
   }, 6000);
 
   const handleSearch = () => {
@@ -117,10 +135,17 @@ function App() {
     setPage(currentPage + 1);
   };
 
+  const visibilityChange = (isVisible) => {
+    if (isVisible) {
+      loadNextPage();
+    }
+  };
+
   return (
     <>
       <div className="filters">
         <p>Search for adoptable dogs in your area!</p>
+        <p>Total search results {pets.length}</p>
         <div>
           <input ref={zipcodeRef} type="number" name="zipcode" />
           <label for="zipcode">Zip Code</label>
@@ -181,7 +206,7 @@ function App() {
         <PetList pets={pets} distance={distance} zipcode={zipcode} />
       </div>
 
-      <VisibilitySensor onChange={loadNextPage}>
+      <VisibilitySensor onChange={visibilityChange}>
         <button onClick={loadNextPage}>Load More!</button>
       </VisibilitySensor>
     </>

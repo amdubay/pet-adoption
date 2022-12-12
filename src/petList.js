@@ -23,41 +23,52 @@ export default function PetList({ pets, distance, zipcode }) {
     var filteredPets = pets;
   }
 
-  return filteredPets.map((pet) => {
-    return (
-      <div className="petCard">
-        <div className="petDataimgDiv">
-          <img
-            src={isPhotoNull(pet.primary_photo_cropped)}
-            className="dogThumbnail"
-          />
-        </div>
-        <div className="petData">
-          <h5>Name: {pet.name}</h5>
-          <p>
-            Location:{" "}
-            {pet.contact.address.city + "," + pet.contact.address.state}
-          </p>
-          <p>Age: {pet.age}</p>
-          <p>Gender: {pet.gender}</p>
-          <p>
-            Breed: {pet.breeds.primary}{" "}
-            {pet.breeds.mixed == true || pet.breeds.secondary ? " - mix" : ""}
-          </p>
+  // running array of pets with cards already created
+  // pagination results from petfinder resulting in duplicate results
+  const petsDisplayed = [];
 
-          {pet.distance ? (
-            <p>Distance {Math.round(pet.distance)} miles</p>
-          ) : (
-            <p></p>
-          )}
-          <Link
-            to={`../petcard/${pet.organization_id}/${pet.id}`}
-            target="_blank"
-          >
-            More details about {pet.name}
-          </Link>
+  return filteredPets.map((pet) => {
+    if (petsDisplayed.includes(pet.id)) {
+      return;
+    } else {
+      petsDisplayed.push(pet.id);
+
+      return (
+        <div className="petCard">
+          <div className="petDataimgDiv">
+            <img
+              src={isPhotoNull(pet.primary_photo_cropped)}
+              className="dogThumbnail"
+            />
+          </div>
+          <div className="petData">
+            <h5>Name: {pet.name}</h5>
+            <p>ID: {pet.id}</p>
+            <p>
+              Location:{" "}
+              {pet.contact.address.city + "," + pet.contact.address.state}
+            </p>
+            <p>Age: {pet.age}</p>
+            <p>Gender: {pet.gender}</p>
+            <p>
+              Breed: {pet.breeds.primary}{" "}
+              {pet.breeds.mixed == true || pet.breeds.secondary ? " - mix" : ""}
+            </p>
+
+            {pet.distance ? (
+              <p>Distance {Math.round(pet.distance)} miles</p>
+            ) : (
+              <p></p>
+            )}
+            <Link
+              to={`../petcard/${pet.organization_id}/${pet.id}`}
+              target="_blank"
+            >
+              More details about {pet.name}
+            </Link>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   });
 }
