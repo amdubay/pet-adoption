@@ -119,9 +119,8 @@ function App() {
 
   return (
     <>
-      <div className="header">
-        <h1>Dogs for adoption!</h1>
-        <p>Search for dogs in your area!</p>
+      <div className="filters">
+        <p>Search for adoptable dogs in your area!</p>
         <div>
           <input ref={zipcodeRef} type="number" name="zipcode" />
           <label for="zipcode">Zip Code</label>

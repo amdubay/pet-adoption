@@ -26,6 +26,12 @@ export default function PetList({ pets, distance, zipcode }) {
   return filteredPets.map((pet) => {
     return (
       <div className="petCard">
+        <div className="petDataimgDiv">
+          <img
+            src={isPhotoNull(pet.primary_photo_cropped)}
+            className="dogThumbnail"
+          />
+        </div>
         <div className="petData">
           <h5>Name: {pet.name}</h5>
           <p>
@@ -51,10 +57,6 @@ export default function PetList({ pets, distance, zipcode }) {
             More details about {pet.name}
           </Link>
         </div>
-        <img
-          src={isPhotoNull(pet.primary_photo_cropped)}
-          className="dogThumbnail"
-        />
       </div>
     );
   });
