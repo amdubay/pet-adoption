@@ -36,14 +36,18 @@ export default function PetList({ pets, distance, zipcode }) {
       return (
         <div className="petCard">
           <div className="petDataimgDiv">
-            <img
-              src={isPhotoNull(pet.primary_photo_cropped)}
-              className="dogThumbnail"
-            />
+            <Link
+              to={`../petcard/${pet.organization_id}/${pet.id}`}
+              target="_blank"
+            >
+              <img
+                src={isPhotoNull(pet.primary_photo_cropped)}
+                className="dogThumbnail"
+              />
+            </Link>
           </div>
           <div className="petData">
             <h5>Name: {pet.name}</h5>
-            <p>ID: {pet.id}</p>
             <p>
               Location:{" "}
               {pet.contact.address.city + "," + pet.contact.address.state}

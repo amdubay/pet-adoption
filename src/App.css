@@ -129,14 +129,35 @@ a {
   }
 }
 /*************  Search Page ****************************/
-.filters {
+.searchPage {
+  display: flex;
+  flex-direction: row;
+}
+.searchPage .filters {
   padding: 20px;
-  min-height: 4vh;
-  max-height: 5vh;
   margin-top: 0;
   margin-bottom: 0;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  box-shadow: 10px 5px 5px grey;
+  justify-content: flex-start;
+}
+.searchPage .filters .selectedFilters .searchCriteriaSelected {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  background-color: aliceblue;
+  margin: 5px;
+  padding: 0;
+}
+.searchPage .filters .selectedFilters .searchCriteriaSelected:hover {
+  cursor: pointer;
+}
+.searchPage .filters .selectedFilters .searchCriteriaSelected p {
+  padding: 5px;
+  margin: 0;
+}
+.searchPage .filters .selectedFilters .searchCriteriaSelected p:nth-child(2) {
+  color: grey;
 }
 
 /************ Need to Organize ****************/
@@ -144,6 +165,7 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  background-color: rgb(235, 230, 230);
 }
 .pets .petCard {
   display: flex;
@@ -153,9 +175,11 @@ a {
   margin: 20px;
   box-shadow: 10px 5px 5px grey;
   background-color: white;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  background-color: rgb(235, 230, 230);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 30px;
+  background-color: white;
 }
 .pets .petCard .petDataimgDiv {
   width: 250px;
@@ -168,9 +192,10 @@ a {
   height: 100%;
   margin: 0px;
   padding: 0px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 20px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
 }
 .pets .petCard .petData {
   width: 210px;

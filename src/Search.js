@@ -4,6 +4,7 @@ import axios from "axios";
 import "./App.css";
 import PetList from "./petList";
 import BreedList from "./breedList";
+import SelectedFilters from "./components/currentlySelectedFilters";
 import VisibilitySensor from "react-visibility-sensor";
 import { server } from "./variables";
 
@@ -24,13 +25,14 @@ function App() {
 
   const getPetsFromApi = async () => {
     console.log("we're in making a request");
+    console.log(`selected breeds are ${selectedBreed}`);
     const resp = await axios.post(`${server}/getPets`, {
       //const resp = await axios.post("http://localhost:4000/getPets", {
       zip: zipcode,
       dist: distance,
       pg: page,
       gen: gender,
-      breed: selectedBreed,
+      //breed: selectedBreed,
     });
     const respData = await resp.data;
     if (page == "1") {
@@ -142,10 +144,20 @@ function App() {
   };
 
   return (
-    <>
+    <div className="searchPage">
       <div className="filters">
         <p>Search for adoptable dogs in your area!</p>
-        <p>Total search results {pets.length}</p>
+        <div className="selectedFilters">
+          <SelectedFilters
+            zipcode={zipcode}
+            setZipcode={setZipcode}
+            gender={gender}
+            setGender={setGender}
+            selectedBreed={selectedBreed}
+            setSelectedBreed={setSelectedBreed}
+          />
+        </div>
+
         <div>
           <input ref={zipcodeRef} type="number" name="zipcode" />
           <label for="zipcode">Zip Code</label>
@@ -204,12 +216,12 @@ function App() {
       </div>
       <div className="pets">
         <PetList pets={pets} distance={distance} zipcode={zipcode} />
-      </div>
 
-      <VisibilitySensor onChange={visibilityChange}>
-        <button onClick={loadNextPage}>Load More!</button>
-      </VisibilitySensor>
-    </>
+        <VisibilitySensor onChange={visibilityChange}>
+          <button onClick={loadNextPage}>Load More!</button>
+        </VisibilitySensor>
+      </div>
+    </div>
   );
 }
 
