@@ -39,11 +39,12 @@ export default function PetCardData({
       </p>
 
       <p>Adoption Organization: {orgData.name}</p>
-      <a href={dogData.url} target="_blank">
-        See more details on PetFinder.com!
-      </a>
+
       <p>
-        About {dogData.name}: {dogData.description}
+        {dogData.description} see more about {dogData.name} on{" "}
+        <a href={dogData.url} target="_blank">
+          PetFinder.com!
+        </a>
       </p>
     </div>
   );
