@@ -1,4 +1,5 @@
 import React from "react";
+import ConvertDescription from "./convertDescriptionToHTML";
 
 export default function PetCardData({
   dogData,
@@ -6,6 +7,7 @@ export default function PetCardData({
   orgData,
   petid,
   photos,
+  dogUrl,
 }) {
   const isPhotoNull = (url) => {
     return url
@@ -40,8 +42,9 @@ export default function PetCardData({
 
       <p>Adoption Organization: {orgData.name}</p>
 
+      <ConvertDescription dogUrl={dogUrl} />
       <p>
-        {dogData.description} see more about {dogData.name} on{" "}
+        See more about {dogData.name} on{" "}
         <a href={dogData.url} target="_blank">
           PetFinder.com!
         </a>

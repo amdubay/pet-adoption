@@ -4,6 +4,7 @@ import axios from "axios";
 import "./App.css";
 import PetList from "./petList";
 import BreedList from "./breedList";
+import DogBreedBoxList from "./components/dogBreedBoxList";
 import SelectedFilters from "./components/currentlySelectedFilters";
 import VisibilitySensor from "react-visibility-sensor";
 import { server } from "./variables";
@@ -17,6 +18,7 @@ function App() {
   const [gender, setGender] = useState();
   const [breedList, setBreedList] = useState([]);
   const [selectedBreed, setSelectedBreed] = useState([]);
+  const [showHideBreedList, setShowHideBreedList] = useState(true);
   //const [breedChoice, setBreedChoice] = useState([]);
   const zipcodeRef = useRef();
   const distanceRef = useRef();
@@ -143,6 +145,17 @@ function App() {
     }
   };
 
+  const onClickShowHideBreedList = () => {
+    let currentToggle = showHideBreedList;
+    setShowHideBreedList(!currentToggle);
+  };
+
+  function handleKeyDown(event) {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  }
+
   return (
     <div className="searchPage">
       <div className="filters">
@@ -159,11 +172,21 @@ function App() {
         </div>
 
         <div>
-          <input ref={zipcodeRef} type="number" name="zipcode" />
+          <input
+            ref={zipcodeRef}
+            type="number"
+            name="zipcode"
+            onKeyDown={handleKeyDown}
+          />
           <label for="zipcode">Zip Code</label>
         </div>
         <div>
-          <input ref={distanceRef} type="text" name="distance" />
+          <input
+            ref={distanceRef}
+            type="text"
+            name="distance"
+            onKeyDown={handleKeyDown}
+          />
           <label for="distance">Distance</label>
         </div>
 
@@ -198,11 +221,23 @@ function App() {
           <label for="female">All</label>
           <label for="gender"> Gender</label>
         </div>
-
+        {/*
         <select ref={breedRef} name="breeds" id="breedSelected" multiple>
           <BreedList breedList={breedList} />
         </select>
         <label for="breeds">Breed</label>
+
+        <p onClick={onClickShowHideBreedList}>Select Breeds</p>
+
+        {showHideBreedList ? (
+          <></>
+        ) : (
+          <div className="dogBreedBox">
+            <DogBreedBoxList breedList={breedList} />
+          </div>
+        )}
+        */}
+
         <button onClick={handleSearch}>Search</button>
 
         {zipcode ? (
