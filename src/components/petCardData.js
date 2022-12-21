@@ -1,5 +1,6 @@
 import React from "react";
 import ConvertDescription from "./convertDescriptionToHTML";
+import ModalGallery from "./petModalGallery";
 
 export default function PetCardData({
   dogData,
@@ -23,11 +24,16 @@ export default function PetCardData({
         src={isPhotoNull(dogData.primary_photo_cropped)}
         className="dogThumbnail"
   />*/}
+      {/*
       <div className="dogPhotos">
         {photos.map((photo) => {
           return <img src={photo} className="dogPicture" />;
         })}
+      </div> */}
+      <div className="modal-container">
+        <ModalGallery photos={photos} />
       </div>
+
       <p>Name: {dogData.name}</p>
       <p>Age: {dogData.age}</p>
       <p>Gender: {dogData.gender}</p>
