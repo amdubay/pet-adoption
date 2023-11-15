@@ -1,0 +1,4 @@
+Petfinder.com api
+API Key: uNiQxEm0TPQitXhAPMHasLM7m0jrGofigQOXSE1Zbt5JGTSV3H
+Secret: jkKe0qjrAV9lIz4T6CwpIwJ4daZpQmvR775RITRo
+https://www.petfinder.com/developers/v2/docs/

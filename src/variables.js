@@ -1,7 +1,7 @@
 // selectServer.   1 = deployed server;   2 = development server
-let selectServer = 2;
+let selectServer = 1;
 let server =
-  selectServer === 1
+  selectServer === 2
     ? "https://petfinderapi.addisondubay.com"
     : "http://localhost:4000";
 
